@@ -23,6 +23,26 @@ function MessageContainer() {
     setThread(messageThread[0])
   }, [])
 
+
+
+
+
+useEffect(() => {
+  function openConnection() {
+    return new WebSocket(`ws://localhost:3000/cable`)
+  }
+  const chatWebSocket = openConnection()
+  chatWebSocket.onopen = (event) => {
+    const subscribeMsg = {'command': 'subscribe', 'identifier': "{\'channel\':\'message_thread_channel\', 'message_thread_id': message_thread.id}"}
+  }
+  chatWebSocket.send(JSON.stringify(subscribeMsg))
+}, [])
+
+
+
+
+
+
   const displayMessages = messages.map(message => {
     return <p>{message.body}</p>
   })

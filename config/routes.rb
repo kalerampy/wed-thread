@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   get '/current_user', to: 'current_user#index'
   resources :permissions
-  resources :messages
+  #resources :messages
   resources :weddings
-  resources :message_threads
+  #resources :message_threads
 
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  mount ActionCable.server => '/cable'
 
 end 
 
