@@ -8,6 +8,7 @@
 
 user1 = User.new
 user1.first_name = "John"
+user1.last_name = "Doe"
 user1.email = 'test1@example.com'
 user1.password = 'password'
 user1.password_confirmation = 'password'
@@ -15,6 +16,7 @@ user1.save!
 
 user2 = User.new
 user2.first_name = "Jimmy"
+user2.last_name = "Smith"
 user2.email = 'test2@example.com'
 user2.password = 'password'
 user2.password_confirmation = 'password'
@@ -22,6 +24,7 @@ user2.save
 
 user3 = User.new
 user3.first_name = "Jane"
+user3.last_name = "Doe"
 user3.email = 'test3@example.com'
 user3.password = 'password'
 user3.password_confirmation = 'password'
@@ -34,6 +37,12 @@ wed3 = Wedding.create!(name: "Wedding 3", location: "San Juan", date: "2020-02-0
 thread1 = MessageThread.create!(title: 'Q & A', wedding_id: wed1.id)
 thread2 = MessageThread.create!(title: 'Wedding Info', wedding_id: wed2.id)
 thread3 = MessageThread.create!(title: 'Directions to Venue', wedding_id: wed3.id)
+thread4 = MessageThread.create!(title: 'Wedding Photos', wedding_id: wed3.id)
+thread5 = MessageThread.create!(title: 'Wedding Invite', wedding_id: wed3.id)
+thread6 = MessageThread.create!(title: 'Wedding RSVP', wedding_id: wed3.id)
+thread7 = MessageThread.create!(title: 'Wedding Hotel', wedding_id: wed3.id)
+thread8 = MessageThread.create!(title: 'Wedding Map', wedding_id: wed3.id)
+thread9 = MessageThread.create!(title: 'Wedding Morning Get Together', wedding_id: wed3.id)
 
 mes1 = Message.create!(body: "Hello, I'm user 1", user_id: user1.id, message_thread_id: thread1.id)
 mes2 = Message.create!(body: "Hello, I'm user 2", user_id: user2.id, message_thread_id: thread2.id)

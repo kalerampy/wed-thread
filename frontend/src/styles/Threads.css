@@ -5,9 +5,21 @@
   margin-top: 80px;
 }
 
+.threads-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
+  max-width: 1200px;
+  margin-top: 20px;
+  overflow: auto;
+}
+
 .thread-list-item {
   background-color: rgba(243, 243, 243, 0.689);
   border-radius: 8px;
+  margin-top: 8px;
 }
 
 .thread-list-item:hover {
@@ -18,4 +30,12 @@
   border-width: thin;
   cursor: pointer;
   box-shadow: 1px 1px #88888830;
+}
+
+.add-button {
+  align-items: flex-end;
+}
+
+.title {
+  margin: 0
 }

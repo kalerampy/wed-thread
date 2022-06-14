@@ -6,7 +6,7 @@ const UserProvider = ({ children }) => {
   const navigate = useNavigate();
   // User is the name of the "data" that gets stored in context
   const [user, setUser] = useState({});
-  const [weddingState, setWeddingState] = useState({});
+  const [weddingState, setWeddingState] = useState(null);
   const fetchCurrentUser = () => {
     fetch(`http://localhost:3000/current_user`, {
       method: "get",
@@ -22,6 +22,7 @@ const UserProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("current_user");
+    localStorage.removeItem("current_wedding");
     setUser({});
     setWeddingState({});
     navigate('/login')

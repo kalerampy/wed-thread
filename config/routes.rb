@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
   get '/current_user', to: 'current_user#index'
+  get '/wedding_threads/:id', to: 'message_threads#wedding_threads'
   resources :permissions
-  #resources :messages
+  resources :messages
   resources :weddings
-  #resources :message_threads
+  resources :message_threads
 
   devise_for :users, path: '', path_names: {
     sign_in: 'login',

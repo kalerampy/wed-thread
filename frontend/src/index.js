@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/UserContext';
 import { BrowserRouter } from 'react-router-dom';
+import { API_WS_ROOT } from './constants';
+
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +17,6 @@ root.render(
       <UserProvider>
         <App />
       </UserProvider>
-  
     </BrowserRouter>
   </React.StrictMode>
 );

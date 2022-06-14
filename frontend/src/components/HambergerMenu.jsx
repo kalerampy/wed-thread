@@ -15,6 +15,7 @@ import '../styles/AppHeaderBar.css'
 import DiamondIcon from '@mui/icons-material/Diamond';
 import { useNavigate } from 'react-router-dom'
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import { MdMail } from 'react-icons/md';
 
 
 
@@ -68,6 +69,16 @@ export default function SwipeableTemporaryDrawer() {
                 <ListAltIcon />
               </ListItemIcon>
               <ListItemText primary={'Threads'} />
+            </ListItemButton>
+          </ListItem>
+      </List>
+      <List>
+          <ListItem  disablePadding>
+            <ListItemButton onClick={() => navigate('/threads')}>
+              <ListItemIcon>
+                <MdMail />
+              </ListItemIcon>
+              <ListItemText primary={'Invite Guests'} />
             </ListItemButton>
           </ListItem>
       </List>

@@ -1,12 +1,10 @@
 import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { UserContext } from '../context/UserContext'
+import { useNavigate, Navigate } from 'react-router-dom'
 
-const Home = () => {
+
+const Home = ({}) => {
   const navigate = useNavigate()
 
-  const { user } = useContext(UserContext)
-  
   
   return (
     <div>

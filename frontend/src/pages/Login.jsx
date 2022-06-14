@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
 
@@ -31,7 +31,12 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn(props) {
+  // if (!props.user) {
+  //   return <Navigate to="/landing" replace />;
+  // }
+  
+  
   const navigate = useNavigate();
   const [formInfo, setFormInfo] = useState({
     email: '',
