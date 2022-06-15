@@ -58,6 +58,7 @@ const Weddings = ( {user} ) => {
     })
     .then(res => res.json())
     .then(data => {
+      console.log(data)
       setWeddingData(data)})
     .catch(err => console.error(err))
   }

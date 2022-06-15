@@ -5,6 +5,7 @@ class CreateApiV1Weddings < ActiveRecord::Migration[7.0]
       t.string :location
       t.datetime :date
       t.string :info_url
+      t.string :unique_id
 
       t.timestamps
     end

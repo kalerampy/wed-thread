@@ -7,6 +7,7 @@ const UserProvider = ({ children }) => {
   // User is the name of the "data" that gets stored in context
   const [user, setUser] = useState({});
   const [weddingState, setWeddingState] = useState(null);
+  const [lastLocation, setLastLocation] = useState(null);
   const fetchCurrentUser = () => {
     fetch(`http://localhost:3000/current_user`, {
       method: "get",
@@ -30,7 +31,7 @@ const UserProvider = ({ children }) => {
 
 
   return (
-    <UserContext.Provider value={{ user, setUser, weddingState, setWeddingState, fetchCurrentUser, logout}}>
+    <UserContext.Provider value={{ user, setUser, weddingState, setWeddingState, fetchCurrentUser, logout, setLastLocation}}>
       {children}
     </UserContext.Provider>
   );

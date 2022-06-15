@@ -80,9 +80,9 @@ const Threads = () => {
               key={thread.id}
               // disableGutters
               secondaryAction={
-                <IconButton aria-label="comment" >
+                
                     <CommentIcon />
-                  </IconButton>
+                  
                 }
                 >
                 <ListItemText primary={`${thread.title}`} />

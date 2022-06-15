@@ -5,14 +5,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate, Navigate, Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 
 
@@ -20,9 +20,9 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      {/* <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -36,16 +36,15 @@ export default function SignIn(props) {
   //   return <Navigate to="/landing" replace />;
   // }
   
-  
+  const location = useLocation();
   const navigate = useNavigate();
   const [formInfo, setFormInfo] = useState({
     email: '',
     password: '',
   });
-
   const [errors, setErrors] = useState()
   
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser} = useContext(UserContext);
 
   const fetchLogin = () => {
     fetch("http://localhost:3000/login", {
@@ -68,10 +67,18 @@ export default function SignIn(props) {
     }
   })
   .then((json) => {
-    console.dir(json.user)
+    console.log(json)
     setUser(json.user)
     localStorage.setItem("current_user", JSON.stringify(json.user));
-    navigate('/dashboard');
+
+    const lastLocation = JSON.parse(localStorage.getItem("last_location"));
+    if (lastLocation.location) {
+      localStorage.setItem("last_location", false);
+      navigate(lastLocation.location);
+    } else {
+      navigate('/dashboard');
+    }
+
   })
   .catch((err) => {
     setErrors(err)
@@ -145,14 +152,13 @@ export default function SignIn(props) {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+                {/* <Link to='/forgot-password'>Forgot password?</Link> */}
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to='/signup'>Don't have an account? Sign Up</Link>
+                {/* <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </Link> */}
               </Grid>
             </Grid>
           </Box>

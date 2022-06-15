@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { API_ROOT } from '../constants';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
@@ -16,12 +19,20 @@ import DiamondIcon from '@mui/icons-material/Diamond';
 import { useNavigate } from 'react-router-dom'
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { MdMail } from 'react-icons/md';
+import { FaCamera, FaListAlt, FaInfo, FaRegCalendarPlus, FaAddressCard } from "react-icons/fa";
 
 
 
 export default function SwipeableTemporaryDrawer() {
   const navigate = useNavigate();
-  
+  const { weddingState, setWeddingState, user } = useContext(UserContext);
+  // useEffect(() => {
+  //   if (weddingState?.id) {
+  //   fetch(API_ROOT + `/permissions/${weddingState.id}`)
+  //   .then(res => res.json())
+  //   .then(data => console.log(data))
+  //   }
+  // }, [])
   
   
   
@@ -66,7 +77,7 @@ export default function SwipeableTemporaryDrawer() {
           <ListItem  disablePadding>
             <ListItemButton onClick={() => navigate('/threads')}>
               <ListItemIcon>
-                <ListAltIcon />
+                <FaListAlt />
               </ListItemIcon>
               <ListItemText primary={'Threads'} />
             </ListItemButton>
@@ -74,11 +85,41 @@ export default function SwipeableTemporaryDrawer() {
       </List>
       <List>
           <ListItem  disablePadding>
-            <ListItemButton onClick={() => navigate('/threads')}>
+            <ListItemButton onClick={() => navigate('/photos')}>
+              <ListItemIcon>
+                <FaCamera />
+              </ListItemIcon>
+              <ListItemText primary={'Photos'} />
+            </ListItemButton>
+          </ListItem>
+      </List>
+      <List>
+          <ListItem  disablePadding>
+            <ListItemButton onClick={() => navigate('/info')}>
+              <ListItemIcon>
+                <FaInfo />
+              </ListItemIcon>
+              <ListItemText primary={'Wedding Info'} />
+            </ListItemButton>
+          </ListItem>
+      </List>
+      <List> 
+          <ListItem  disablePadding>
+            <ListItemButton onClick={() => navigate('/invite')}>
               <ListItemIcon>
                 <MdMail />
               </ListItemIcon>
               <ListItemText primary={'Invite Guests'} />
+            </ListItemButton>
+          </ListItem>
+      </List>
+      <List>
+          <ListItem  disablePadding>
+            <ListItemButton onClick={() => navigate('/create-wedding')}>
+              <ListItemIcon>
+                <FaRegCalendarPlus/>
+              </ListItemIcon>
+              <ListItemText primary={'Create Wedding'} />
             </ListItemButton>
           </ListItem>
       </List>

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get '/current_user', to: 'current_user#index'
   get '/wedding_threads/:id', to: 'message_threads#wedding_threads'
+  get '/invite_link/:id', to: 'invites#unique_get'
+  post '/invite_link', to: 'invites#invite_post'
   resources :permissions
   resources :messages
   resources :weddings

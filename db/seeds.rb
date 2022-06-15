@@ -30,9 +30,9 @@ user3.password = 'password'
 user3.password_confirmation = 'password'
 user3.save
 
-wed1 = Wedding.create!(name: "Wedding 1", location: "San Diego", date: "2020-01-01", info_url: "https://www.google.com")
-wed2 = Wedding.create!(name: "Wedding 2", location: "San Fransico", date: "2020-02-02", info_url: "https://www.google.com")
-wed3 = Wedding.create!(name: "Wedding 3", location: "San Juan", date: "2020-02-02", info_url: "https://www.google.com")
+wed1 = Wedding.create!(name: "Wedding 1", location: "San Diego", date: "2020-01-01", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
+wed2 = Wedding.create!(name: "Wedding 2", location: "San Fransico", date: "2020-02-02", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
+wed3 = Wedding.create!(name: "Wedding 3", location: "San Juan", date: "2020-02-02", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
 
 thread1 = MessageThread.create!(title: 'Q & A', wedding_id: wed1.id)
 thread2 = MessageThread.create!(title: 'Wedding Info', wedding_id: wed2.id)

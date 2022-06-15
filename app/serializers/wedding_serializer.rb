@@ -1,7 +1,6 @@
 class WeddingSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :info_url, :date, :location
+  attributes :id, :name, :info_url, :date, :location, :unique_id
 
-  has_many :message_threads
 
 end

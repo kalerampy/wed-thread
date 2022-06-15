@@ -12,6 +12,12 @@ class WeddingsController < ApplicationController
     #this will render the weddings of the user
   end
 
+
+
+  def unique_post
+    
+  end
+
   def create
     wedding = Wedding.create!(wedding_params)
 

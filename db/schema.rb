@@ -71,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_08_205310) do
     t.string "location"
     t.datetime "date"
     t.string "info_url"
+    t.string "unique_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

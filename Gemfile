@@ -43,6 +43,8 @@ gem 'devise'
 gem 'devise-jwt'
 
 gem 'fast_jsonapi'
+
+gem 'faker'
 # gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
