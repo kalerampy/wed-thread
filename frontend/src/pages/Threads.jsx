@@ -22,11 +22,13 @@ const Threads = () => {
   
   useEffect (() => {
     fetchCurrentUser()
+    if (weddingState?.id){
     fetch(API_ROOT + '/wedding_threads/' + weddingState.id)
     .then(res => res.json())
     .then(data => {
       setWeddingThreads(data)
     })
+  }
   }, [])
 
   const currentWedding = localStorage.getItem('current_wedding')

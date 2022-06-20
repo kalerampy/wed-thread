@@ -5,4 +5,9 @@ class PermissionsController < ApplicationController
     render json: permission
   end
 
+  def destroy
+    permission = Permission.find(params[:id])
+    permission.destroy
+    render json: {}, status: :ok
+  end
 end

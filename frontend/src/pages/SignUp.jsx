@@ -20,12 +20,12 @@ import { UserContext } from '../context/UserContext';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+      {/* {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
+      {'.'} */}
     </Typography>
   );
 }
@@ -41,6 +41,7 @@ export default function SignUp() {
     first_name: '',
     last_name: ''
   })
+  const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
@@ -59,14 +60,17 @@ const fetchSignUp = () => {
     if (res.ok) {
       console.log(res.headers.get("Authorization"));
       localStorage.setItem("token", res.headers.get("Authorization"));
-      navigate('/dashboard')
+      navigate('/weddings')
       return res.json();
     } else {
-      throw new Error(res);
+      res.json().then(errors => {
+        console.log(errors.status.message)
+        setErrors(errors.status.message)
+      })
     }
   })
   .then((json) => console.dir(json))
-  .catch((err) => console.error(err));
+  .catch((err) => console.log(err));
 }
   
 
@@ -96,6 +100,9 @@ const fetchSignUp = () => {
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
+          </Typography>
+          <Typography component="p" variant="p" style={{color: 'red'}}>
+            {errors}
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>

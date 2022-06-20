@@ -1,39 +1,29 @@
 import * as React from 'react';
-import { useEffect, useContext } from 'react';
+import {  useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-import { API_ROOT } from '../constants';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
+
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import '../styles/AppHeaderBar.css'
 import DiamondIcon from '@mui/icons-material/Diamond';
 import { useNavigate } from 'react-router-dom'
-import ListAltIcon from '@mui/icons-material/ListAlt';
+
 import { MdMail } from 'react-icons/md';
-import { FaCamera, FaListAlt, FaInfo, FaRegCalendarPlus, FaAddressCard } from "react-icons/fa";
+import { FaCamera, FaListAlt, FaInfo, FaRegCalendarPlus} from "react-icons/fa";
 
 
 
 export default function SwipeableTemporaryDrawer() {
   const navigate = useNavigate();
   const { weddingState, setWeddingState, user } = useContext(UserContext);
-  // useEffect(() => {
-  //   if (weddingState?.id) {
-  //   fetch(API_ROOT + `/permissions/${weddingState.id}`)
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  //   }
-  // }, [])
-  
+
   
   
   const [state, setState] = React.useState({
@@ -73,7 +63,7 @@ export default function SwipeableTemporaryDrawer() {
         </ListItem>
       </List>
       <Divider />
-      <List>
+    { weddingState?.user_permission ? <List>
           <ListItem  disablePadding>
             <ListItemButton onClick={() => navigate('/threads')}>
               <ListItemIcon>
@@ -82,8 +72,8 @@ export default function SwipeableTemporaryDrawer() {
               <ListItemText primary={'Threads'} />
             </ListItemButton>
           </ListItem>
-      </List>
-      <List>
+      </List> : null }
+      {/* {weddingState?.user_permission ? <List>
           <ListItem  disablePadding>
             <ListItemButton onClick={() => navigate('/photos')}>
               <ListItemIcon>
@@ -92,8 +82,8 @@ export default function SwipeableTemporaryDrawer() {
               <ListItemText primary={'Photos'} />
             </ListItemButton>
           </ListItem>
-      </List>
-      <List>
+      </List> : null} */}
+      {/* {weddingState?.user_permission ? <List>
           <ListItem  disablePadding>
             <ListItemButton onClick={() => navigate('/info')}>
               <ListItemIcon>
@@ -102,8 +92,8 @@ export default function SwipeableTemporaryDrawer() {
               <ListItemText primary={'Wedding Info'} />
             </ListItemButton>
           </ListItem>
-      </List>
-      <List> 
+      </List> : null} */}
+    {weddingState?.user_permission?.access === 'host' ? <List> 
           <ListItem  disablePadding>
             <ListItemButton onClick={() => navigate('/invite')}>
               <ListItemIcon>
@@ -112,7 +102,18 @@ export default function SwipeableTemporaryDrawer() {
               <ListItemText primary={'Invite Guests'} />
             </ListItemButton>
           </ListItem>
-      </List>
+      </List> : null}
+    {weddingState?.user_permission?.access === 'host' ? <List> 
+          <ListItem  disablePadding>
+            <ListItemButton onClick={() => navigate('/guest-list')}>
+              <ListItemIcon>
+                <MdMail />
+              </ListItemIcon>
+              <ListItemText primary={'Guest List'} />
+            </ListItemButton>
+          </ListItem>
+      </List> : null}
+    {weddingState?.user_permission ? <Divider /> : null }
       <List>
           <ListItem  disablePadding>
             <ListItemButton onClick={() => navigate('/create-wedding')}>

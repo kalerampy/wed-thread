@@ -14,14 +14,15 @@ import Info from "./pages/Info";
 import Photos from "./pages/Photos";
 import NewWedding from "./pages/NewWedding";
 import WeddingEnrollment from "./pages/WeddingEnrollment";
+import GuestList from "./pages/GuestList";
 
 function App() {
   const { user } = useContext(UserContext);
   return (
     <div className='App'>
       <Routes>
-        <Route path="/home" element={user ? <Navigate to="/dashboard" replace /> : <Home />} />
-        <Route path='/login' element={<Login />} />
+        <Route path="/home" element={<Home />} />
+        <Route path='/login' element={user ? <Navigate to="/weddings" replace /> : <Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={user ? <DashBoard /> : <Navigate to="/login" replace />}/>
         <Route path='/threads/:id/messages' element={user ? <MessageContainer/> : <Navigate to="/login" replace />}/>
@@ -30,9 +31,10 @@ function App() {
         <Route path="/" element={ <Home />} />
         <Route path="/invite" element={user ? <Invite /> : <Navigate to="/login" replace />} />
         <Route path="/invite/:unique_id" element={<WeddingEnrollment />} />
-        <Route path="/info" element={user ? <Info /> : <Navigate to="/login" replace />} />
-        <Route path="/photos" element={user ? <Photos /> : <Navigate to="/login" replace />} />
-        <Route path="/create-wedding" element={user ? <NewWedding /> : <Navigate to="/signup" replace />} />
+        {/* <Route path="/info" element={user ? <Info /> : <Navigate to="/login" replace />} /> */}
+        {/* <Route path="/photos" element={user ? <Photos /> : <Navigate to="/login" replace />} /> */}
+        <Route path="/create-wedding" element={user ? <NewWedding /> : <Navigate to="/login" replace />} />
+        <Route path="/guest-list" element={user ? <GuestList />: <Navigate to="/login" replace />} />
 
 
         <Route path="*" element={<p>404! Page Not Found</p>} />

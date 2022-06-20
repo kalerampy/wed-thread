@@ -12,15 +12,21 @@ class WeddingsController < ApplicationController
     #this will render the weddings of the user
   end
 
+  def wedding_guests
+    guests = Wedding.find(params[:id]).users.where.not(id: current_user.id)
+    render json: guests, status: :ok
+  end
 
-
-  def unique_post
-    
+  def wedding_info
+    wedding = Wedding.find(params[:id])
+    render json: wedding, status: :ok
   end
 
   def create
     wedding = Wedding.create!(wedding_params)
-
+    wedding.unique_id = Faker::Internet.uuid
+    wedding.save
+    wedding.permissions.create!(user_id: current_user.id, access: "host")
     render json: wedding, status: :created
   end
 

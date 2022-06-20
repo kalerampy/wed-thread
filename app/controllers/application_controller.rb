@@ -19,7 +19,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
   end
 
   def invalid_record(error)
-    render json: {error: [error.message]}, status: :unprocessable_entity
+    render json: {error: [error.full]}, status: :unprocessable_entity
   end
 
   def configure_permitted_parameters

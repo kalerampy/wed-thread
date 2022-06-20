@@ -29,9 +29,13 @@ const UserProvider = ({ children }) => {
     navigate('/login')
   }
 
+  const fetchWeddingState = () => {
+    const wedding = localStorage.getItem("current_wedding");
+    setWeddingState(JSON.parse(wedding));
+  }
 
   return (
-    <UserContext.Provider value={{ user, setUser, weddingState, setWeddingState, fetchCurrentUser, logout, setLastLocation}}>
+    <UserContext.Provider value={{ user, setUser, weddingState, setWeddingState, fetchCurrentUser, logout, setLastLocation, fetchWeddingState}}>
       {children}
     </UserContext.Provider>
   );

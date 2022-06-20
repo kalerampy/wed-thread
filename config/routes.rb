@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/wedding_threads/:id', to: 'message_threads#wedding_threads'
   get '/invite_link/:id', to: 'invites#unique_get'
   post '/invite_link', to: 'invites#invite_post'
+  get '/wedding_guests/:id', to: 'weddings#wedding_guests'
+  get 'wedding_info/:id', to: 'weddings#wedding_info'
   resources :permissions
   resources :messages
   resources :weddings

@@ -76,7 +76,7 @@ export default function SignIn(props) {
       localStorage.setItem("last_location", false);
       navigate(lastLocation.location);
     } else {
-      navigate('/dashboard');
+      navigate('/weddings');
     }
 
   })

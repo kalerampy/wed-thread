@@ -12,7 +12,7 @@ const Invite = () => {
   useEffect(() => {
     const wedding = JSON.parse(localStorage.getItem('current_wedding'))
     setWeddingState(wedding)
-  }, [])
+  }, [setWeddingState])
 
   const link = `http://localhost:4000/invite/`
   return (
@@ -21,7 +21,6 @@ const Invite = () => {
       <h1>Invite</h1>
       <p>Invite your friends to join your wedding!</p>
       <button onClick={() => {navigator.clipboard.writeText(`${link}${weddingState.unique_id}`)}}>Copy Link</button>
-      {weddingState ? <Link to={`${weddingState.unique_id}`}>Copy Link</Link> : null}
     </div>
   )
 }
