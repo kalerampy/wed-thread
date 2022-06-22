@@ -28,14 +28,16 @@ const Home = ({}) => {
             borderColor: 'white', 
             '&:hover': {
             backgroundColor: '#00c2cb',
-            color: '#3c52b2'} 
+            color: 'white',
+            borderColor: '#00c2cb'} 
             }} variant='outlined' onClick={() => navigate('/login')}>Login</Button>
             <Button sx={{ margin: 1, 
             color: 'white', 
             borderColor: 'white', 
             '&:hover': {
             backgroundColor: '#00c2cb',
-            color: '#3c52b2'} 
+            color: 'white',
+            borderColor: '#00c2cb'} 
             }} variant='outlined' onClick={() => navigate('/signup')}>Sign Up</Button>
           </div>
 

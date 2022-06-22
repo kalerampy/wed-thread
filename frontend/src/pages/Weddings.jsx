@@ -11,6 +11,9 @@ import AppBarHeader from '../components/AppBarHeader'
 import { useNavigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+import { inputLabelClasses } from "@mui/material/InputLabel";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -63,15 +66,21 @@ const Weddings = ( {user} ) => {
     .catch(err => console.error(err))
   }
 
+
+
+
+
+
+
   const ifWedding = () => {
     return <>
     <h2>Please Select a Wedding</h2>
     <FormControl sx={{ m: 1, width: 300 }}>
-      <InputLabel id="demo-multiple-name-label">Wedding Name</InputLabel>
+      <InputLabel 
+    
+      >Wedding Name</InputLabel>
       <Select
-        labelId="demo-multiple-name-label"
-        id="demo-multiple-name"
-        input={<OutlinedInput label="Wedding Name" />}
+        input={<OutlinedInput className='OutlinedInput' label="Wedding Name" />}
         MenuProps={MenuProps}
         value={weddingValue}
         onChange={(e) => {

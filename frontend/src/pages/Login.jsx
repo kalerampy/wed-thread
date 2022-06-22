@@ -181,13 +181,15 @@ export default function SignIn(props) {
               type="submit"
               fullWidth
               variant="outlined"
-              sx={{ mt: 3, mb: 2 }}
-              sx={{ margin: 1, 
+    
+              sx={{ marginTop: 1, 
+                marginBottom: 1,
                 color: '#00c2cb', 
                 borderColor: '#00c2cb', 
                 '&:hover': {
                 backgroundColor: '#00c2cb',
-                color: 'white'} 
+                color: 'white',
+                borderColor: '#00c2cb'} 
                 }}
             >
               Sign In

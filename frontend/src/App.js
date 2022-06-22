@@ -15,11 +15,29 @@ import Photos from "./pages/Photos";
 import NewWedding from "./pages/NewWedding";
 import WeddingEnrollment from "./pages/WeddingEnrollment";
 import GuestList from "./pages/GuestList";
+import { ThemeProvider, createTheme } from "@mui/material"
+
+
+const theme = createTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#00c2cb',
+      contrastText: 'rgba(255,255,255,0.87)',
+    },
+    secondary: {
+      main: '#f50057',
+    },
+  }
+})
+
+
 
 function App() {
   const { user } = useContext(UserContext);
   return (
     <div className='App'>
+      <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path='/login' element={user ? <Navigate to="/weddings" replace /> : <Login />} />
@@ -39,6 +57,7 @@ function App() {
 
         <Route path="*" element={<p>404! Page Not Found</p>} />
       </Routes>
+      </ThemeProvider>
     </div>
   );
 }

@@ -16,7 +16,39 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import { FaRegUserCircle } from "react-icons/fa";
 import '../styles/Login.css';
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+import { inputLabelClasses } from "@mui/material/InputLabel";
+import { styled } from "@mui/material/styles";
 
+const StyledTextField = styled(TextField)({
+  [`& .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#c4c4c4"
+  },
+  [`&:hover .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#3f3f3f"
+  },
+  [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#00c2cb"
+  },
+  [`& .${outlinedInputClasses.input}`]: {
+    color: "#c4c4c4"
+  },
+  [`&:hover .${outlinedInputClasses.input}`]: {
+    color: "#3f3f3f"
+  },
+  [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.input}`]: {
+    color: "#00c2cb"
+  },
+  [`& .${inputLabelClasses.outlined}`]: {
+    color: "#c4c4c4"
+  },
+  [`&:hover .${inputLabelClasses.outlined}`]: {
+    color: "#3f3f3f"
+  },
+  [`& .${inputLabelClasses.outlined}.${inputLabelClasses.focused}`]: {
+    color: "#00c2cb"
+  }
+});
 
 
 function Copyright(props) {
@@ -112,7 +144,7 @@ const fetchSignUp = () => {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <StyledTextField
                   autoComplete="given-name"
                   name="firstName"
                   required
@@ -125,7 +157,7 @@ const fetchSignUp = () => {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <StyledTextField
                   required
                   fullWidth
                   id="lastName"
@@ -137,7 +169,7 @@ const fetchSignUp = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <StyledTextField
                   required
                   fullWidth
                   id="email"
@@ -149,7 +181,7 @@ const fetchSignUp = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <StyledTextField
                   required
                   fullWidth
                   name="password"
@@ -162,7 +194,7 @@ const fetchSignUp = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <StyledTextField
                   required
                   fullWidth
                   name="password_confirmation"
@@ -179,14 +211,24 @@ const fetchSignUp = () => {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              variant="outlined"
+              
+              sx={{ marginTop: 2,
+                marginBottom: 2,
+                color: '#00c2cb', 
+                borderColor: '#00c2cb', 
+                '&:hover': {
+                backgroundColor: '#00c2cb',
+                color: 'white',
+                borderColor: '#00c2cb'} 
+                }}
             >
               Sign Up
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link to="/login">
+                <Link to="/login" style={{textDecoration: 'none', color: '#b2b2b2', '&:hover': {
+            color: 'black'}}}>
                   Already have an account? Sign in
                 </Link>
               </Grid>

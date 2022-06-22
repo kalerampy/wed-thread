@@ -11,6 +11,8 @@ import { lightBlue } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import { createTheme, ThemeProvider} from '@mui/material/styles';
+
 
 export default function ButtonAppBar() {
   
@@ -40,9 +42,22 @@ export default function ButtonAppBar() {
   .catch((err) => console.error(err));
 }
 
+
+const customTheme = createTheme({
+  palette: {
+    secondary: {
+      main: "#00c2cb",
+      contrastText: "white"
+    }
+  }
+});
+
+
+
   return (
+    <ThemeProvider theme={customTheme}>
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="absolute" color='info'>
+      <AppBar position="absolute" color='secondary'>
         <Toolbar>
           <IconButton
             size="large"
@@ -57,9 +72,10 @@ export default function ButtonAppBar() {
             Hello, {user ? user.first_name: null}
           </Typography>
           {user ? <Button color="inherit" variant='outlined' onClick={handleLogout}>Logout</Button> 
-          : <Button color="inherit" onClick={() => navigate('/login') }>Login</Button>}
+          : <Button color="inherit" variant='outlined' onClick={() => navigate('/login') }>Login</Button>}
         </Toolbar>
       </AppBar>
     </Box>
+    </ThemeProvider>
   );
 }

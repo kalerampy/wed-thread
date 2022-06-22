@@ -13,6 +13,9 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom'
+import { styled } from '@mui/material/styles';
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+import { inputLabelClasses } from "@mui/material/InputLabel";
 
 const NewWedding = () => {
   const navigate = useNavigate()
@@ -50,6 +53,37 @@ const NewWedding = () => {
     })
   }
 }
+
+const StyledTextField = styled(TextField)({
+  [`& .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#c4c4c4"
+  },
+  [`&:hover .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#3f3f3f"
+  },
+  [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#00c2cb"
+  },
+  [`& .${outlinedInputClasses.input}`]: {
+    color: "#c4c4c4"
+  },
+  [`&:hover .${outlinedInputClasses.input}`]: {
+    color: "#3f3f3f"
+  },
+  [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.input}`]: {
+    color: "#00c2cb"
+  },
+  [`& .${inputLabelClasses.outlined}`]: {
+    color: "#c4c4c4"
+  },
+  [`&:hover .${inputLabelClasses.outlined}`]: {
+    color: "#3f3f3f"
+  },
+  [`& .${inputLabelClasses.outlined}.${inputLabelClasses.focused}`]: {
+    color: "#00c2cb"
+  }
+});
+
   
   
   
@@ -61,7 +95,7 @@ const NewWedding = () => {
       </div>
       <div className='new-wedding-page-form'>
         <div className='new-wedding-page-form-input'>
-        <TextField
+        <StyledTextField
   
           name='name'
           label="Wedding Name"
@@ -70,7 +104,7 @@ const NewWedding = () => {
         />
         </div>
         <div className='new-wedding-page-form-input'>
-        <TextField
+        <StyledTextField
 
           name='location'
           label="Location"
@@ -79,7 +113,7 @@ const NewWedding = () => {
         />
         </div>
         <div className='new-wedding-page-form-input'>
-        <TextField
+        <StyledTextField
  
           name='info_url'
           onChange={(e) => setNewWedding({ ...newWedding, [e.target.name]: e.target.value })}
@@ -97,12 +131,21 @@ const NewWedding = () => {
           onChange={(newValue) => {
             setNewWedding({ ...newWedding, date: newValue.toISOString() });
           }}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <StyledTextField {...params} />}
         />
         </div>
         </LocalizationProvider>
         <div className='new-wedding-page-form-button'>
-        <Button variant='outlined' onClick={handleSubmit}>Create Wedding</Button> 
+        <Button 
+        sx={{ margin: 1, 
+          color: '#00c2cb', 
+          borderColor: '#00c2cb', 
+          '&:hover': {
+          backgroundColor: '#00c2cb',
+          color: 'white',
+          borderColor: '#00c2cb'} 
+          }}
+        variant='outlined' onClick={handleSubmit}>Create Wedding</Button> 
         </div>
         </div>
     </div>
