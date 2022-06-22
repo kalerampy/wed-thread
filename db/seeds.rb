@@ -30,23 +30,20 @@ user3.password = 'password'
 user3.password_confirmation = 'password'
 user3.save
 
-wed1 = Wedding.create!(name: "Wedding 1", location: "San Diego", date: "2020-01-01", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
-wed2 = Wedding.create!(name: "Wedding 2", location: "San Fransico", date: "2020-02-02", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
-wed3 = Wedding.create!(name: "Wedding 3", location: "San Juan", date: "2020-02-02", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
+wed1 = Wedding.create!(name: "John & Kate's Wedding", location: "San Diego", date: "2020-01-01", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
+wed2 = Wedding.create!(name: "Jimmy & Lauren's Wedding", location: "San Fransico", date: "2020-02-02", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
+wed3 = Wedding.create!(name: "Jane & Mike's Wedding", location: "San Juan", date: "2020-02-02", info_url: "https://www.google.com", unique_id: Faker::Internet.uuid)
 
 thread1 = MessageThread.create!(title: 'Q & A', wedding_id: wed1.id)
-thread2 = MessageThread.create!(title: 'Wedding Info', wedding_id: wed2.id)
+thread2 = MessageThread.create!(title: 'Day Before Wedding Info', wedding_id: wed2.id)
 thread3 = MessageThread.create!(title: 'Directions to Venue', wedding_id: wed3.id)
-thread4 = MessageThread.create!(title: 'Wedding Photos', wedding_id: wed3.id)
-thread5 = MessageThread.create!(title: 'Wedding Invite', wedding_id: wed3.id)
-thread6 = MessageThread.create!(title: 'Wedding RSVP', wedding_id: wed3.id)
-thread7 = MessageThread.create!(title: 'Wedding Hotel', wedding_id: wed3.id)
-thread8 = MessageThread.create!(title: 'Wedding Map', wedding_id: wed3.id)
+thread7 = MessageThread.create!(title: 'Wedding Hotel Activities', wedding_id: wed3.id)
+thread8 = MessageThread.create!(title: 'Things to Do In The Area', wedding_id: wed3.id)
 thread9 = MessageThread.create!(title: 'Wedding Morning Get Together', wedding_id: wed3.id)
 
-mes1 = Message.create!(body: "Hello, I'm user 1", user_id: user1.id, message_thread_id: thread1.id)
-mes2 = Message.create!(body: "Hello, I'm user 2", user_id: user2.id, message_thread_id: thread2.id)
-mes3 = Message.create!(body: "Hello, I'm user 3", user_id: user3.id, message_thread_id: thread3.id)
+mes1 = Message.create!(body: "Hello, I'm John", user_id: user1.id, message_thread_id: thread1.id)
+mes2 = Message.create!(body: "Hello, I'm Jimmy", user_id: user2.id, message_thread_id: thread2.id)
+mes3 = Message.create!(body: "Hello, I'm Jane", user_id: user3.id, message_thread_id: thread3.id)
 
 perm1 = Permission.create!(access: 'host', user_id: user1.id, wedding_id: wed1.id)
 perm2 = Permission.create!(access: 'atendee', user_id: user2.id, wedding_id: wed1.id)

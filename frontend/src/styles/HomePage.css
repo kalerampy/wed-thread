@@ -1,0 +1,97 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+  background: rgb(3,178,250);
+  background: linear-gradient(103deg, rgba(3,178,250,1) 0%, rgba(26,179,215,1) 46%, rgba(0,212,255,1) 100%);
+}
+
+.text-over-image {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../images/glasses.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+.home-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10vw;
+}
+
+.main-text {
+  max-width: 17vw;
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: white;
+}
+
+.main-text h2 {
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.home-image img {
+  max-width: 150px;
+  height: auto;
+  position: absolute;
+  top: 6%;
+  left: 9.5%;
+}
+
+
+
+
+
+
+
+
+
+
+/* h1 {
+  margin: 0;
+  color: white;
+}
+
+
+.home-image {
+  position: relative;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+.home-image img {
+  width: 100vw;
+  object-position: 0 0;
+}
+
+.home-image h2 {
+  font-size: 3rem;
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.home-buttons {
+  position: absolute;
+  top: 60%;
+  left: 19.25%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.main-text {
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  max-width: 300px;
+  text-align: left;
+  margin-bottom: 10px;
+} */
+

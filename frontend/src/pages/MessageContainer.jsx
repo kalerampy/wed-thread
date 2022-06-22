@@ -8,6 +8,7 @@ import { API_ROOT, API_WS_ROOT, HEADERS } from '../constants/index'
 import SendNewMessage from '../components/SendNewMessage'
 import { createConsumer } from '@rails/actioncable'
 import { dividerClasses } from '@mui/material'
+import { flexbox } from '@mui/system'
 
  
 function MessageContainer() {
@@ -122,6 +123,7 @@ function MessageContainer() {
     <div className='messages-page'>
       <AppBarHeader/>
       <h2>{thread.title}</h2>
+
       <div className='messages-container'>
         {displayMessage}
       </div>  

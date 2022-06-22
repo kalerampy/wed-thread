@@ -26,7 +26,7 @@ const UserProvider = ({ children }) => {
     localStorage.removeItem("current_wedding");
     setUser({});
     setWeddingState({});
-    navigate('/login')
+    navigate('/')
   }
 
   const fetchWeddingState = () => {

@@ -1,5 +1,9 @@
 import React, { useContext } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
+import { Button } from '@mui/material'
+import '../styles/HomePage.css'
+import wedThreadImage from '../images/wedThreadImage.png'
+
 
 
 const Home = ({}) => {
@@ -7,12 +11,36 @@ const Home = ({}) => {
 
   
   return (
-    <div>
-      Home Page
-      <h1>Wed Thread</h1>
-      <h3>Better wedding communication for all</h3> 
-      <button onClick={() => navigate('/login')}>Login</button>
-      <button onClick={() => navigate('/signup')}>Sign Up</button>
+    <div className='home-page'>
+      <header className='home-page-header'>
+        
+      </header>
+      <div className='text-over-image'>
+        <div className='home-image'>
+          <img src={wedThreadImage} alt=''/>
+          <div className='main-text'>
+            <h2>Guest communication made easy!</h2> 
+          </div>
+          {/* <img src={rings}  alt="rings" /> */}
+          <div className='home-buttons'>
+            <Button sx={{ margin: 1, 
+            color: 'white', 
+            borderColor: 'white', 
+            '&:hover': {
+            backgroundColor: '#00c2cb',
+            color: '#3c52b2'} 
+            }} variant='outlined' onClick={() => navigate('/login')}>Login</Button>
+            <Button sx={{ margin: 1, 
+            color: 'white', 
+            borderColor: 'white', 
+            '&:hover': {
+            backgroundColor: '#00c2cb',
+            color: '#3c52b2'} 
+            }} variant='outlined' onClick={() => navigate('/signup')}>Sign Up</Button>
+          </div>
+
+        </div>
+      </div>
     </div>
   )
 }

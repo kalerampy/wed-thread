@@ -15,13 +15,14 @@
   flex-direction: column;
   align-items: center;
   margin-top: 65px;
+  
 }
 
 .messages-container {
   display: flex;
-  
+  max-width: 500px;
   flex-direction: column-reverse;
-  width: 90vw;
+  width: 85vw;
   height: 68vh;
   padding: 20px;
   margin-bottom: 10px;
@@ -45,7 +46,8 @@
 }
 
 .message-input {
-  width: 78vw;
+  width: 80vw;
+  max-width: 500px;
 }
 
 .small {

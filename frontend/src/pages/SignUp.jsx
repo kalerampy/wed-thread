@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -14,6 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import { FaRegUserCircle } from "react-icons/fa";
+import '../styles/Login.css';
 
 
 
@@ -84,8 +86,11 @@ const fetchSignUp = () => {
   };
 
   return (
+    <div className='login-page'>
+      <div className='login-image'>
+      </div>
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Box
           sx={{
@@ -95,8 +100,8 @@ const fetchSignUp = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: '#00c2cb' }}>
+            <FaRegUserCircle />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
@@ -169,12 +174,7 @@ const fetchSignUp = () => {
                   onChange={(e) => setFormInfo({ ...formInfo, password_confirmation: e.target.value })}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="Label here"
-                />
-              </Grid>
+              
             </Grid>
             <Button
               type="submit"
@@ -184,9 +184,9 @@ const fetchSignUp = () => {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/login">
                   Already have an account? Sign in
                 </Link>
               </Grid>
@@ -196,5 +196,6 @@ const fetchSignUp = () => {
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
+    </div>
   );
 }

@@ -5,24 +5,59 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Navigate, Link, useLocation } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import { FaRegUserCircle } from "react-icons/fa";
+import '../styles/Login.css';
+import wedThreadImage from '../images/wedThreadImage.png';
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+import { inputLabelClasses } from "@mui/material/InputLabel";
+import { styled } from "@mui/material/styles";
+
+const StyledTextField = styled(TextField)({
+  [`& .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#c4c4c4"
+  },
+  [`&:hover .${outlinedInputClasses.root} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#3f3f3f"
+  },
+  [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
+    borderColor: "#00c2cb"
+  },
+  [`& .${outlinedInputClasses.input}`]: {
+    color: "#c4c4c4"
+  },
+  [`&:hover .${outlinedInputClasses.input}`]: {
+    color: "#3f3f3f"
+  },
+  [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.input}`]: {
+    color: "#00c2cb"
+  },
+  [`& .${inputLabelClasses.outlined}`]: {
+    color: "#c4c4c4"
+  },
+  [`&:hover .${inputLabelClasses.outlined}`]: {
+    color: "#3f3f3f"
+  },
+  [`& .${inputLabelClasses.outlined}.${inputLabelClasses.focused}`]: {
+    color: "#00c2cb"
+  }
+});
 
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      {/* <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '} */}
+      <Link color="inherit" to="https://wed-thread.com/">
+        Wed Thread
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -93,8 +128,11 @@ export default function SignIn(props) {
   };
 
   return (
+    <div className='login-page'>
+      <div className='login-image'>
+      </div>
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Box
           sx={{
@@ -104,17 +142,17 @@ export default function SignIn(props) {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: '#00c2cb' }}>
+            <FaRegUserCircle />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
           <Typography component="p" variant="p" style={{color: 'red'}}>
             {errors}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
+            <StyledTextField
               margin="normal"
               required
               fullWidth
@@ -126,7 +164,7 @@ export default function SignIn(props) {
               onChange={(e) => setFormInfo({ ...formInfo, email: e.target.value })}
               value={formInfo.email}
             />
-            <TextField
+            <StyledTextField
               margin="normal"
               required
               fullWidth
@@ -138,24 +176,27 @@ export default function SignIn(props) {
               onChange={(e) => setFormInfo({ ...formInfo, password: e.target.value })}
               value={formInfo.password}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+          
             <Button
               type="submit"
               fullWidth
-              variant="contained"
+              variant="outlined"
               sx={{ mt: 3, mb: 2 }}
+              sx={{ margin: 1, 
+                color: '#00c2cb', 
+                borderColor: '#00c2cb', 
+                '&:hover': {
+                backgroundColor: '#00c2cb',
+                color: 'white'} 
+                }}
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                {/* <Link to='/forgot-password'>Forgot password?</Link> */}
-              </Grid>
+            <Grid container direction='column' alignItems='center'>
               <Grid item>
-                <Link to='/signup'>Don't have an account? Sign Up</Link>
+                <Link style={{textDecoration: 'none', color: '#b2b2b2', '&:hover': {
+            color: 'black'}}} 
+            to='/signup'>Don't have an account? Sign Up</Link>
                 {/* <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link> */}
@@ -166,5 +207,6 @@ export default function SignIn(props) {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+    </div>
   );
 }

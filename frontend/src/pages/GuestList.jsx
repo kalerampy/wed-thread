@@ -15,6 +15,7 @@ import AppBarHeader from '../components/AppBarHeader';
 import '../styles/GuestList.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import { useNavigate } from 'react-router-dom';
 
 
 function generate(element) {
@@ -35,18 +36,14 @@ const Demo = styled('div')(({ theme }) => ({
 
 const GuestList = () => {
   
-  const { weddingState, fetchCurrentUser, fetchWeddingState } = useContext(UserContext);
+  const { weddingState, fetchCurrentUser, fetchWeddingState, setWeddingState } = useContext(UserContext);
   const [guests, setGuests] = React.useState([]);
-
-
-
-
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchCurrentUser()
-    fetchWeddingState()
-    if (weddingState) {
-      
+    if (!weddingState) {
+      navigate('/weddings')
+    } else {
       fetch('http://localhost:3000/wedding_guests/' + weddingState.id, {
         method: 'GET',
         headers: {
@@ -60,6 +57,10 @@ const GuestList = () => {
         setGuests(res)
       })
     }
+    fetchCurrentUser()
+    console.log(weddingState)
+      
+
     }, [])
 
     const removeGuest = (id) => {
@@ -81,31 +82,31 @@ const GuestList = () => {
   return (
     <div className='guest-list-page'>
       <AppBarHeader/>
-
-      <Grid item xs={12} md={6}>
-          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-            Avatar with text and icon
-          </Typography>
+    <h2>Guest List</h2>
+      <Grid>
           <Demo>
             <List>
             {guests.map((guest) => {
-              return (<ListItem
-                  key={guest.id}
-                  secondaryAction={
-                    <IconButton edge="end" aria-label="delete" onClick={() => removeGuest(guest.id)}>
-                      <RemoveCircleOutlineIcon/>
-                    </IconButton>
-                  }
-                >
-                  <ListItemAvatar>
-                    <Avatar>
-                      <AccountCircleIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={guest.first_name + " " + guest.last_name}
-                  />
-                </ListItem>)
+              return (
+                <div className='list-item'>
+                  <ListItem
+                      key={guest.id}
+                      secondaryAction={
+                        <IconButton edge="end" aria-label="delete" onClick={() => removeGuest(guest.id)}>
+                          <RemoveCircleOutlineIcon/>
+                        </IconButton>
+                      }
+                    >
+                      <ListItemAvatar>
+                        <Avatar>
+                          <AccountCircleIcon />
+                        </Avatar>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={guest.first_name + " " + guest.last_name}
+                      />
+                    </ListItem>
+              </div>)
             })}
             </List>
           </Demo>

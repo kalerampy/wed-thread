@@ -3,13 +3,16 @@ import ButtonAppBar from '../components/AppBarHeader'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../context/UserContext'
 import { Link } from 'react-router-dom'
+import { Button } from '@mui/material'
+import '../styles/Invite.css'
 
 
 
 const Invite = () => {
-  const { weddingState, setWeddingState } = useContext(UserContext)
+  const { weddingState, setWeddingState, fetchCurrentUser } = useContext(UserContext)
 
   useEffect(() => {
+    fetchCurrentUser()
     const wedding = JSON.parse(localStorage.getItem('current_wedding'))
     setWeddingState(wedding)
   }, [setWeddingState])
@@ -18,9 +21,13 @@ const Invite = () => {
   return (
     <div>
       <ButtonAppBar/>
-      <h1>Invite</h1>
-      <p>Invite your friends to join your wedding!</p>
-      <button onClick={() => {navigator.clipboard.writeText(`${link}${weddingState.unique_id}`)}}>Copy Link</button>
+      <div className='invite-page'>
+      <h2>Invite Guests with Link Below</h2>
+      <br />
+      <Button variant='outlined'  onClick={() => {navigator.clipboard.writeText(`${link}${weddingState.unique_id}`)}}>Copy Link</Button>
+      <br/>
+      <p>*Note, anyone with this link can accept an invitation to your wedding</p>
+      </div>
     </div>
   )
 }

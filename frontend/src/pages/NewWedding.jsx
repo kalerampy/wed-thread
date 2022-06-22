@@ -12,8 +12,10 @@ import { FormControl } from '@mui/material';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom'
 
 const NewWedding = () => {
+  const navigate = useNavigate()
   const [value, setValue] = React.useState(new Date());
   const [newWedding, setNewWedding] = React.useState({
     name: '',
@@ -43,7 +45,7 @@ const NewWedding = () => {
     })
     .then(res => res.json())
     .then(res => {
-      
+      navigate('/weddings')
       console.log(res)
     })
   }

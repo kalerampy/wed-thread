@@ -56,7 +56,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Hello, {user ? user.first_name: null}
           </Typography>
-          {user ? <Button color="inherit" onClick={handleLogout}>Logout</Button> 
+          {user ? <Button color="inherit" variant='outlined' onClick={handleLogout}>Logout</Button> 
           : <Button color="inherit" onClick={() => navigate('/login') }>Login</Button>}
         </Toolbar>
       </AppBar>
