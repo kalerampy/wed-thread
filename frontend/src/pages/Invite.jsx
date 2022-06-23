@@ -22,7 +22,7 @@ const Invite = () => {
     <div>
       <ButtonAppBar/>
       <div className='invite-page'>
-      <h2>Invite Guests with Link Below</h2>
+      <h2>Invite Guests</h2>
       <br />
       <Button variant='outlined'  onClick={() => {navigator.clipboard.writeText(`${link}${weddingState.unique_id}`)}}>Copy Link</Button>
       <br/>

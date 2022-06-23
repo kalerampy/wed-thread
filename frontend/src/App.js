@@ -38,25 +38,23 @@ function App() {
   return (
     <div className='App'>
       <ThemeProvider theme={theme}>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path='/login' element={user ? <Navigate to="/weddings" replace /> : <Login />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/dashboard' element={user ? <DashBoard /> : <Navigate to="/login" replace />}/>
-        <Route path='/threads/:id/messages' element={user ? <MessageContainer/> : <Navigate to="/login" replace />}/>
-        <Route path='/weddings' element={user ? <Weddings /> : <Navigate to="/login" replace />}/>
-        <Route path='/threads' element={user ? <Threads /> : <Navigate to="/login" replace />}/>
-        <Route path="/" element={ <Home />} />
-        <Route path="/invite" element={user ? <Invite /> : <Navigate to="/login" replace />} />
-        <Route path="/invite/:unique_id" element={<WeddingEnrollment />} />
-        {/* <Route path="/info" element={user ? <Info /> : <Navigate to="/login" replace />} /> */}
-        {/* <Route path="/photos" element={user ? <Photos /> : <Navigate to="/login" replace />} /> */}
-        <Route path="/create-wedding" element={user ? <NewWedding /> : <Navigate to="/login" replace />} />
-        <Route path="/guest-list" element={user ? <GuestList />: <Navigate to="/login" replace />} />
-
-
-        <Route path="*" element={<p>404! Page Not Found</p>} />
-      </Routes>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path='/login' element={user ? <Navigate to="/weddings" replace /> : <Login />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/dashboard' element={user ? <DashBoard /> : <Navigate to="/login" replace />}/>
+          <Route path='/threads/:id/messages' element={user ? <MessageContainer/> : <Navigate to="/login" replace />}/>
+          <Route path='/weddings' element={user ? <Weddings /> : <Navigate to="/login" replace />}/>
+          <Route path='/threads' element={user ? <Threads /> : <Navigate to="/login" replace />}/>
+          <Route path="/" element={ <Home />} />
+          <Route path="/invite" element={user ? <Invite /> : <Navigate to="/login" replace />} />
+          <Route path="/invite/:unique_id" element={<WeddingEnrollment />} />
+          {/* <Route path="/info" element={user ? <Info /> : <Navigate to="/login" replace />} /> */}
+          {/* <Route path="/photos" element={user ? <Photos /> : <Navigate to="/login" replace />} /> */}
+          <Route path="/create-wedding" element={user ? <NewWedding /> : <Navigate to="/login" replace />} />
+          <Route path="/guest-list" element={user ? <GuestList />: <Navigate to="/login" replace />} />
+          <Route path="*" element={<p>404! Page Not Found</p>} />
+        </Routes>
       </ThemeProvider>
     </div>
   );

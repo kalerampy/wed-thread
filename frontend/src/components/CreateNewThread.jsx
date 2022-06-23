@@ -49,7 +49,7 @@ const CreateNewThread = ({ handleSendThread }) => {
         width: '1.3em',
         height: '1.3em',
         marginLeft: '10px',
-        color: '#2c99ed',
+        color: '#00c2cb',
       }}
       /> }
      {isDisabled ? <FaPaperPlane
@@ -61,7 +61,7 @@ const CreateNewThread = ({ handleSendThread }) => {
         width: '1.3em',
         height: '1.3em',
         marginLeft: '3vw',
-        color: '#2c99ed',
+        color: '#00c2cb',
       }}
       />: null}
 

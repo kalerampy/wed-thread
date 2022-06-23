@@ -3,6 +3,8 @@ import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router'
 import { API_ROOT } from '../constants'
 import { UserContext } from '../context/UserContext'
+import { Button } from '@mui/material'
+import '../styles/WeddingEnrollment.css'
 
 const WeddingEnrollment = () => {
   const [wedding, setWedding] = useState({})
@@ -10,6 +12,7 @@ const WeddingEnrollment = () => {
   const { unique_id } = useParams()
   const location = useLocation()
   const navigate = useNavigate()
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     fetchCurrentUser()
@@ -41,19 +44,26 @@ const WeddingEnrollment = () => {
         },
         body: JSON.stringify(userObject)
       })
-      .then(res => res.json())
-      .then(json => console.log(json))
+      .then(res => {
+        if (res.ok) {
+          navigate('/weddings')
+        } else {
+          console.log('error')
+          setError('You are already enrolled in this wedding')
+        }
+      })
     }
   }
   }
   
   return (
-    <div>
+    <div className='wedding-enrollment'>
       <h1>You've been invited to:</h1>
-      <h2>{wedding.name}</h2>
-      <button onClick={enrollUser}>Accept Invitation</button>
+      <h3>{wedding.name}</h3>
+      <Button variant='contained' onClick={enrollUser}>Accept Invitation</Button>
       <p>Don't have an account?</p>
-      <Link to="/signup">Sign Up</Link>
+      <Link style={{color: 'white'}} to="/signup">Sign Up</Link>
+      {error && <h3 style={{color: 'red'}}>{error}</h3>}
     </div>
     
   )

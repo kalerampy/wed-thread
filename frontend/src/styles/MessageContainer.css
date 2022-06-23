@@ -20,14 +20,14 @@
 
 .messages-container {
   display: flex;
-  max-width: 500px;
+  border-width: 2px;
+  max-width: 550px;
   flex-direction: column-reverse;
   width: 85vw;
-  height: 68vh;
-  padding: 20px;
+  height: 70vh;
+  padding-right: 10px;
   margin-bottom: 10px;
   overflow-y: scroll; 
-
 }
 
 .left {
@@ -61,7 +61,7 @@
 .message-blue {
   width: fit-content;
   max-width: 60vw;
-  background-color: rgb(36, 153, 237);
+  background-color: #00c2cb;
   color: white;
   margin-top: 10px;
   padding: 12px;

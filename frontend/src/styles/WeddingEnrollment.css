@@ -1,0 +1,16 @@
+.wedding-enrollment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  background-image: url('../images/cheersBlackAndWhite.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-shadow:rgba(0, 0, 0, 0.8) 0px -5px 38px, rgba(0, 0, 0, 0.8) 0px 8px 10px;
+}
+
+.wedding-enrollment h1 {
+  margin: 0;
+}

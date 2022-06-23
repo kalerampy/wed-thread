@@ -4,14 +4,14 @@
   align-items: center;
 
   height: 100vh;
-  background: rgb(3,178,250);
-  background: linear-gradient(103deg, rgba(3,178,250,1) 0%, rgba(26,179,215,1) 46%, rgba(0,212,255,1) 100%);
+
 }
 
 .text-over-image {
   width: 100vw;
   height: 100vh;
   background-image: url(../images/glasses.jpg);
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -39,7 +39,7 @@
   max-width: 150px;
   height: auto;
   position: absolute;
-  top: 6%;
+  top: 9%;
   left: 9.5%;
 }
 

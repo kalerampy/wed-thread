@@ -37,7 +37,7 @@ const StyledTextField = styled(TextField)({
     color: "#3f3f3f"
   },
   [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.input}`]: {
-    color: "#00c2cb"
+    color: "black"
   },
   [`& .${inputLabelClasses.outlined}`]: {
     color: "#c4c4c4"

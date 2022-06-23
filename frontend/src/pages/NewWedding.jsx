@@ -71,7 +71,7 @@ const StyledTextField = styled(TextField)({
     color: "#3f3f3f"
   },
   [`& .${outlinedInputClasses.root}.${outlinedInputClasses.focused} .${outlinedInputClasses.input}`]: {
-    color: "#00c2cb"
+    color: "black"
   },
   [`& .${inputLabelClasses.outlined}`]: {
     color: "#c4c4c4"
@@ -95,7 +95,7 @@ const StyledTextField = styled(TextField)({
       </div>
       <div className='new-wedding-page-form'>
         <div className='new-wedding-page-form-input'>
-        <StyledTextField
+        <TextField
   
           name='name'
           label="Wedding Name"
@@ -104,7 +104,7 @@ const StyledTextField = styled(TextField)({
         />
         </div>
         <div className='new-wedding-page-form-input'>
-        <StyledTextField
+        <TextField
 
           name='location'
           label="Location"
@@ -113,7 +113,7 @@ const StyledTextField = styled(TextField)({
         />
         </div>
         <div className='new-wedding-page-form-input'>
-        <StyledTextField
+        <TextField
  
           name='info_url'
           onChange={(e) => setNewWedding({ ...newWedding, [e.target.name]: e.target.value })}
@@ -131,7 +131,7 @@ const StyledTextField = styled(TextField)({
           onChange={(newValue) => {
             setNewWedding({ ...newWedding, date: newValue.toISOString() });
           }}
-          renderInput={(params) => <StyledTextField {...params} />}
+          renderInput={(params) => <TextField {...params} />}
         />
         </div>
         </LocalizationProvider>

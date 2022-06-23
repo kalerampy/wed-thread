@@ -48,7 +48,7 @@ const SendNewMessage = ({ handleSendMessage }) => {
         width: '1.3em',
         height: '1.3em',
         marginLeft: '3vw',
-        color: '#2c99ed',
+        color: '#00c2cb',
       }}
       />
 
